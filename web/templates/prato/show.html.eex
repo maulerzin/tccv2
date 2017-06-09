@@ -1,0 +1,15 @@
+<h2>Show restaurante</h2>
+
+<ul>
+
+  <li>
+    <strong>Nome:</strong>
+    <%= @restaurante.nome %>
+  </li>
+
+
+
+</ul>
+
+<%= link "Edit", to: restaurante_path(@conn, :edit, @restaurante) %>
+<%= link "Back", to: prato_path(@conn, :index) %>

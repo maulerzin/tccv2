@@ -1,0 +1,29 @@
+<h2>Listing Restaurantes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for restaurante <- @restaurantes do %>
+    <tr>
+      <td><%= restaurante.nome %></td>
+
+
+
+      <td class="text-right">
+        <%= link "Show", to: prato_path(@conn, :show, restaurante), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: prato_path(@conn, :edit, restaurante), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: prato_path(@conn, :delete, restaurante), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New restaurante", to: prato_path(@conn, :new) %>
