@@ -9,3 +9,10 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Tccv2.Repo
+alias Tccv2.Categoria
+
+for categoria <- ~w(Japonês Pizzas Lanches Saudável Sobremesa ) do
+  Repo.get_by(Categoria, nome: categoria) ||
+    Repo.insert!(%Categoria{nome: categoria})
+end

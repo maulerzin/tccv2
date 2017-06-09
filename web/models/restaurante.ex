@@ -4,7 +4,17 @@ defmodule Tccv2.Restaurante do
   schema "restaurantes" do
     field :nome, :string
     field :cnpj, :string
+    field :endereco, :string
+    field :estado, :string
+    field :cidade, :string
+    field :bairro, :string
+    field :telefone, :string
+    field :cep, :string
+
     field :logo, :string
+
+    belongs_to :categoria, Tccv2.Categoria
+
 
     timestamps()
   end
@@ -14,7 +24,7 @@ defmodule Tccv2.Restaurante do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:nome, :cnpj, :logo])
-    |> validate_required([:nome, :cnpj, :logo])
+    |> cast(params, [:nome, :cnpj, :endereco, :estado, :cidade, :bairro, :telefone, :cep, :logo, :categoria_id])
+    |> validate_required([:nome, :cnpj, :endereco, :estado, :cidade, :bairro, :telefone, :cep, :logo, :categoria_id])
   end
 end

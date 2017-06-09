@@ -7,6 +7,36 @@
     <%= @restaurante.nome %>
   </li>
 
+  <li>
+    <strong>Cnpj:</strong>
+    <%= @restaurante.cnpj %>
+  </li>
+  <li>
+    <strong>Endereço:</strong>
+    <%= @restaurante.endereco %>
+  </li>
+  <li>
+    <strong>Estado:</strong>
+    <%= @restaurante.estado %>
+  </li>
+  <li>
+    <strong>Cidade:</strong>
+    <%= @restaurante.cidade %>
+  </li>
+  <li>
+    <strong>Bairro:</strong>
+    <%= @restaurante.bairro %>
+  </li>
+  <li>
+    <strong>CEP:</strong>
+    <%= @restaurante.cep %>
+  </li>
+  <li>
+    <strong>Logo:</strong>
+    <%= @restaurante.logo %>
+  </li>
+  
+
 
 
 </ul>

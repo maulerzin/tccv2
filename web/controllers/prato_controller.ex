@@ -2,10 +2,20 @@
 
 defmodule Tccv2.PratoController do
   use Tccv2.Web, :controller
-
-
+  alias Tccv2.Categoria
   alias Tccv2.Restaurante
 
+  plug :load_categories when action in [:new, :create, :edit, :update]
+
+  defp load_categories(conn, _) do
+    query =
+      Categoria
+      |> Categoria.alphabetical
+      |> Categoria.names_and_ids
+    categorias = Repo.all query
+    assign(conn, :categorias, categorias)
+  end
+  
   def index(conn, _params) do
     restaurantes = Repo.all(Restaurante)
     render(conn, "index.html", restaurantes: restaurantes)
