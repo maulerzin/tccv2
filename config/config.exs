@@ -38,6 +38,9 @@ config :coherence,
 config :coherence, Tccv2.Coherence.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
   api_key: "your api key here"
+
+  config :policy_wonk, PolicyWonk,
+  policies: Tccv2.Policies
 # %% End Coherence Configuration %%
 
 import_config "#{Mix.env}.exs"

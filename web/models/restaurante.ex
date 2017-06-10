@@ -14,6 +14,7 @@ defmodule Tccv2.Restaurante do
     field :logo, :string
 
     belongs_to :categoria, Tccv2.Categoria
+    belongs_to :user, Tccv2.User
 
 
     timestamps()
@@ -24,7 +25,7 @@ defmodule Tccv2.Restaurante do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:nome, :cnpj, :endereco, :estado, :cidade, :bairro, :telefone, :cep, :logo, :categoria_id])
+    |> cast(params, [:nome, :cnpj, :endereco, :estado, :cidade, :bairro, :telefone, :cep, :logo, :categoria_id, :user_id])
     |> validate_required([:nome, :cnpj, :endereco, :estado, :cidade, :bairro, :telefone, :cep, :logo, :categoria_id])
   end
 end

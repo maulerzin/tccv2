@@ -14,6 +14,8 @@ defmodule Tccv2.User do
       field :telefone, :string
     coherence_schema
 
+    has_many :restaurantes, Tccv2.Restaurante
+
     timestamps
   end
 

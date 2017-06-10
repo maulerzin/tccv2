@@ -3,9 +3,11 @@
 defmodule Tccv2.PratoController do
   use Tccv2.Web, :controller
   alias Tccv2.Categoria
-  alias Tccv2.Restaurante
+  alias Tccv2.{Restaurante, User}
 
   plug :load_categories when action in [:new, :create, :edit, :update]
+  plug PolicyWonk.LoadResource, [:restaurante] when action in [:show, :edit, :update, :delete]
+plug PolicyWonk.Enforce, :restaurante_owner when action in [:show, :edit, :update, :delete]
 
   defp load_categories(conn, _) do
     query =
@@ -15,10 +17,14 @@ defmodule Tccv2.PratoController do
     categorias = Repo.all query
     assign(conn, :categorias, categorias)
   end
-  
+
+
+
   def index(conn, _params) do
-    restaurantes = Repo.all(Restaurante)
-    render(conn, "index.html", restaurantes: restaurantes)
+    query = from r in Restaurante,
+          where: r.user_id == ^conn.assigns.current_user.id
+  restaurantes = Repo.all(query)
+  render(conn, "index.html", restaurantes: restaurantes)
   end
 
   def new(conn, _params) do
@@ -27,15 +33,19 @@ defmodule Tccv2.PratoController do
   end
 
   def create(conn, %{"restaurante" => prato_params}) do
-    changeset = Restaurante.changeset(%Restaurante{}, prato_params)
+    prato_params =
+    prato_params
+    |> Map.put("user_id", conn.assigns.current_user.id)
 
-    case Repo.insert(changeset) do
-      {:ok, _prato} ->
-        conn
-        |> put_flash(:info, "Restaurante created successfully.")
-        |> redirect(to: prato_path(conn, :index))
-      {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+  changeset = Restaurante.changeset(%Restaurante{}, prato_params)
+
+  case Repo.insert(changeset) do
+    {:ok, _prato} ->
+      conn
+      |> put_flash(:info, "Restaurante Adicionado")
+      |> redirect(to: prato_path(conn, :index))
+    {:error, changeset} ->
+      render(conn, "new.html", changeset: changeset)
     end
   end
 
@@ -75,6 +85,28 @@ defmodule Tccv2.PratoController do
     |> put_flash(:info, "Restaurante deleted successfully.")
     |> redirect(to: prato_path(conn, :index))
   end
+
+  def policy(assigns, :restaurante_owner) do
+  case {assigns[:current_user], assigns[:restaurante]} do
+    {%User{id: user_id}, restaurante=%Restaurante{}} ->
+      case restaurante.user_id do
+        ^user_id -> :ok
+        _ -> :not_found
+      end
+    _ -> :not_found
+  end
+end
+
+def policy_error(conn, :not_found) do
+  Tccv2.ErrorHandlers.resource_not_found(conn, :not_found)
+end
+
+def load_resource(_conn, :restaurante, %{"id" => id}) do
+  case Repo.get(Restaurante, id) do
+    nil -> :not_found
+    restaurante -> {:ok, :restaurante, restaurante}
+  end
+end
 
 
 
