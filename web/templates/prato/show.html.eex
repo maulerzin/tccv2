@@ -1,45 +1,19 @@
-<h2>Show restaurante</h2>
+<h2>Show prato</h2>
 
 <ul>
 
   <li>
     <strong>Nome:</strong>
-    <%= @restaurante.nome %>
+    <%= @prato.nome %>
   </li>
 
   <li>
-    <strong>Cnpj:</strong>
-    <%= @restaurante.cnpj %>
+    <strong>Valor:</strong>
+    <%= @prato.valor %>
   </li>
-  <li>
-    <strong>Endereço:</strong>
-    <%= @restaurante.endereco %>
-  </li>
-  <li>
-    <strong>Estado:</strong>
-    <%= @restaurante.estado %>
-  </li>
-  <li>
-    <strong>Cidade:</strong>
-    <%= @restaurante.cidade %>
-  </li>
-  <li>
-    <strong>Bairro:</strong>
-    <%= @restaurante.bairro %>
-  </li>
-  <li>
-    <strong>CEP:</strong>
-    <%= @restaurante.cep %>
-  </li>
-  <li>
-    <strong>Logo:</strong>
-    <%= @restaurante.logo %>
-  </li>
-  
-
 
 
 </ul>
 
-<%= link "Edit", to: restaurante_path(@conn, :edit, @restaurante) %>
+<%= link "Edit", to: prato_path(@conn, :edit, @prato) %>
 <%= link "Back", to: prato_path(@conn, :index) %>

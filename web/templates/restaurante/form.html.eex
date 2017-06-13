@@ -12,10 +12,66 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :valor, class: "control-label" %>
-    <%= text_input f, :valor, class: "form-control" %>
-    <%= error_tag f, :valor %>
+    <%= label f, :categoria_id, "Categoria",
+    class: "control-label" %>
+      <%= select f, :categoria_id, @categorias,
+      class: "form-control",
+          prompt: "Escolha Categoria" %>
   </div>
+
+  <div class="form-group">
+    <%= label f, :cnpj, class: "control-label" %>
+    <%= text_input f, :cnpj, class: "form-control" %>
+    <%= error_tag f, :cnpj %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :endereco, class: "control-label" %>
+    <%= text_input f, :endereco, class: "form-control" %>
+    <%= error_tag f, :endereco %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :bairro, class: "control-label" %>
+    <%= text_input f, :bairro, class: "form-control" %>
+    <%= error_tag f, :bairro %>
+  </div>
+
+
+  <div class="form-group">
+    <%= label f, :cidade, class: "control-label" %>
+    <%= text_input f, :cidade, class: "form-control" %>
+    <%= error_tag f, :cidade %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :estado, class: "control-label" %>
+    <%= text_input f, :estado, class: "form-control" %>
+    <%= error_tag f, :estado %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :telefone, class: "control-label" %>
+    <%= text_input f, :telefone, class: "form-control" %>
+    <%= error_tag f, :telefone %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :cep, class: "control-label" %>
+    <%= text_input f, :cep, class: "form-control" %>
+    <%= error_tag f, :cep %>
+  </div>
+
+
+
+  <div class="form-group">
+    <%= label f, :logo, class: "control-label" %>
+    <%= text_input f, :logo, class: "form-control" %>
+    <%= error_tag f, :logo %>
+  </div>
+
+
+
 
 
 
