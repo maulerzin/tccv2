@@ -3,7 +3,7 @@ defmodule Tccv2.Repo.Migrations.AddUserIdToRestaurantes do
 
   def change do
     alter table(:restaurantes) do
-      add :user_id, references(:restaurantes, on_delete: :delete_all)
+      add :user_id, references(:users, on_delete: :delete_all)
     end
 
   end
