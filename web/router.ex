@@ -41,8 +41,9 @@ scope "/" do
   end
   scope "/", Tccv2 do
     pipe_through :protected
+    resources "/restaurantes", RestauranteController do
     resources "/pratos", PratoController
-    resources "/restaurantes", RestauranteController
+  end
 
     # Add protected routes below
   end

@@ -11,13 +11,13 @@
   </thead>
   <tbody>
 <%= for restaurante <- @restaurantes do %>
-    <tr>
+    <tr>S
       <td><%= restaurante.nome %></td>
 
 
 
       <td class="text-right">
-        <%= link "Show", to: restaurante_path(@conn, :show, restaurante), class: "btn btn-default btn-xs" %>
+        <%= link "Show", to: restaurante_prato_path(@conn, :index, restaurante), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: restaurante_path(@conn, :edit, restaurante), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: restaurante_path(@conn, :delete, restaurante), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>

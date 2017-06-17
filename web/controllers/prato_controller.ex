@@ -5,41 +5,42 @@ defmodule Tccv2.PratoController do
   alias Tccv2.Prato
 
 
-  def index(conn, _params) do
-    pratos = Repo.all(Prato)
-    render(conn, "index.html", pratos: pratos)
+  def index(conn, %{"restaurante_id" => restaurante_id}) do
+    query = from r in Prato, where: r.restaurante_id == ^restaurante_id
+    pratos = Repo.all(query)
+    render(conn, "index.html", restaurante_id: restaurante_id, pratos: pratos)
   end
 
-  def new(conn, _params) do
+  def new(conn, %{"restaurante_id" => restaurante_id}) do
     changeset = Prato.changeset(%Prato{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html",restaurante_id: restaurante_id, changeset: changeset)
   end
 
-  def create(conn, %{"prato" => prato_params}) do
-    changeset = Prato.changeset(%Prato{}, prato_params)
+  def create(conn, %{"restaurante_id" => restaurante_id, "prato" => prato_params}) do
+    changeset = Prato.changeset(%Prato{}, Map.put(prato_params, "restaurante_id", restaurante_id))
 
     case Repo.insert(changeset) do
       {:ok, _prato} ->
         conn
         |> put_flash(:info, "Prato created successfully.")
-        |> redirect(to: prato_path(conn, :index))
+        |> redirect(to: restaurante_prato_path(conn, :index, restaurante_id))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => id, "restaurante_id" => restaurante_id}) do
     prato = Repo.get!(Prato, id)
-    render(conn, "show.html", prato: prato)
+    render(conn, "show.html", restaurante_id: restaurante_id, prato: prato)
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, %{"id" => id, "restaurante_id" => restaurante_id}) do
     prato = Repo.get!(Prato, id)
     changeset = Prato.changeset(prato)
-    render(conn, "edit.html", prato: prato, changeset: changeset)
+    render(conn, "edit.html", restaurante_id: restaurante_id, prato: prato, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "prato" => prato_params}) do
+  def update(conn, %{"restaurante_id" => restaurante_id, "id" => id, "prato" => prato_params}) do
     prato = Repo.get!(Prato, id)
     changeset = Prato.changeset(prato, prato_params)
 
@@ -47,13 +48,13 @@ defmodule Tccv2.PratoController do
       {:ok, prato} ->
         conn
         |> put_flash(:info, "Prato updated successfully.")
-        |> redirect(to: prato_path(conn, :show, prato))
+        |> redirect(to: restaurante_prato_path(conn, :show, restaurante_id, prato))
       {:error, changeset} ->
         render(conn, "edit.html", prato: prato, changeset: changeset)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id,"restaurante_id" => restaurante_id}) do
     prato = Repo.get!(Prato, id)
 
     # Here we use delete! (with a bang) because we expect
@@ -62,7 +63,7 @@ defmodule Tccv2.PratoController do
 
     conn
     |> put_flash(:info, "Prato deleted successfully.")
-    |> redirect(to: prato_path(conn, :index))
+    |> redirect(to: restaurante_prato_path(conn, :index, restaurante_id))
   end
 
 

@@ -15,6 +15,7 @@ defmodule Tccv2.Restaurante do
 
     belongs_to :categoria, Tccv2.Categoria
     belongs_to :user, Tccv2.User
+    has_many :pratos, Tccv2.Prato
 
 
     timestamps()

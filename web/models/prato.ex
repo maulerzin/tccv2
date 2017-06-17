@@ -5,6 +5,8 @@ defmodule Tccv2.Prato do
     field :nome, :string
     field :valor, :float
 
+    belongs_to :restaurante, Nested.Restaurante
+
     timestamps()
   end
 
@@ -13,7 +15,7 @@ defmodule Tccv2.Prato do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:nome, :valor])
-    |> validate_required([:nome, :valor])
+    |> cast(params, [:nome, :valor, :restaurante_id])
+    |> validate_required([:nome, :valor, :restaurante_id])
   end
 end
