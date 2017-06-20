@@ -11,7 +11,7 @@
   </thead>
   <tbody>
 <%= for restaurante <- @restaurantes do %>
-    <tr>S
+    <tr>
       <td><%= restaurante.nome %></td>
 
 
