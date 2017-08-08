@@ -49,19 +49,17 @@ defmodule Tccv2.RestauranteController do
       end
     end
 
-    def show(conn, %{"id" => id}) do
-      restaurante = Repo.get!(Restaurante, id)
+    def show(conn=%{assigns: %{restaurante: restaurante}}, _params) do
+
       render(conn, "show.html", restaurante: restaurante)
     end
 
-    def edit(conn, %{"id" => id}) do
-      restaurante = Repo.get!(Restaurante, id)
+    def edit(conn=%{assigns: %{restaurante: restaurante}}, _params) do
       changeset = Restaurante.changeset(restaurante)
       render(conn, "edit.html", restaurante: restaurante, changeset: changeset)
     end
 
-    def update(conn, %{"id" => id, "restaurante" => restaurante_params}) do
-      restaurante = Repo.get!(Restaurante, id)
+    def update(conn=%{assigns: %{restaurante: restaurante}}, %{"restaurante" => restaurante_params}) do
       changeset = Restaurante.changeset(restaurante, restaurante_params)
 
       case Repo.update(changeset) do
@@ -74,8 +72,7 @@ defmodule Tccv2.RestauranteController do
       end
     end
 
-    def delete(conn, %{"id" => id}) do
-      restaurante = Repo.get!(Restaurante, id)
+    def delete(conn=%{assigns: %{restaurante: restaurante}}, _params) do
 
       # Here we use delete! (with a bang) because we expect
       # it to always work (and if it does not, it will raise).

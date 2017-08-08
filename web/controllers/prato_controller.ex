@@ -2,8 +2,10 @@
 
 defmodule Tccv2.PratoController do
   use Tccv2.Web, :controller
-  alias Tccv2.Prato
+  alias Tccv2.{User, Restaurante, Prato}
 
+  plug PolicyWonk.LoadResource, [:restaurante] when action in [:index, :show, :edit, :update, :delete]
+  plug PolicyWonk.Enforce, :restaurante_owner when action in [:index, :show, :edit, :update, :delete]
 
   def index(conn, %{"restaurante_id" => restaurante_id}) do
     query = from r in Prato, where: r.restaurante_id == ^restaurante_id
@@ -66,6 +68,27 @@ defmodule Tccv2.PratoController do
     |> redirect(to: restaurante_prato_path(conn, :index, restaurante_id))
   end
 
+    def policy(assigns, :restaurante_owner) do
+      case {assigns[:current_user], assigns[:restaurante]} do
+        {%User{id: user_id}, restaurante=%Restaurante{}} ->
+          case restaurante.user_id do
+           ^user_id -> :ok
+            _ -> :not_found
+          end
+        _ -> :not_found
+      end
+    end
+
+    def load_resource(_conn, :restaurante, %{"restaurante_id" => id}) do
+      case Repo.get(Restaurante, id) do
+        nil -> :not_found
+       restaurante -> {:ok, :restaurante, restaurante}
+      end
+    end
+
+    def policy_error(conn, :not_found) do
+      Tccv2.ErrorHandlers.resource_not_found(conn, :not_found)
+    end
 
 
 end
