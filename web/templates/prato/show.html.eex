@@ -19,6 +19,10 @@
 
 
 </ul>
+<%= form_for @conn, add_to_cart_path(@conn, :add), [as: "add_to_cart"], fn f -> %>
+  <%= hidden_input(:prato, :id, value: @prato.id) %>
+  <%= submit "Add to cart", class: 'add-to-cart' %>
+<% end %>
 
 <%= link "Edit", to: restaurante_prato_path(@conn, :edit, @restaurante_id, @prato) %>
 <%= link "Back", to: restaurante_prato_path(@conn, :index, @restaurante_id) %>

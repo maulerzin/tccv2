@@ -39,7 +39,8 @@ defmodule Tccv2.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
     {:coherence, "~> 0.3"},
-    {:policy_wonk, "~> 0.2"}
+    {:policy_wonk, "~> 0.2"},
+    {:phoenix_live_reload, "~> 1.0.8"}
    ]
   end
 

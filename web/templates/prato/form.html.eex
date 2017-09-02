@@ -17,6 +17,12 @@
     <%= error_tag f, :valor %>
   </div>
 
+  <div class="form-group">
+    <%= label f, :descricao, class: "control-label" %>
+    <%= text_input f, :descricao, class: "form-control" %>
+    <%= error_tag f, :descricao %>
+  </div>
+
 
 
 

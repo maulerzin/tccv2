@@ -4,7 +4,7 @@ defmodule Tccv2.Repo.Migrations.CreatePrato do
   def change do
     create table(:pratos) do
       add :nome, :string
-      add :valor, :float
+      add :valor, :decimal
 
       timestamps()
     end

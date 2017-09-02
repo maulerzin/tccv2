@@ -1,0 +1,45 @@
+<h2>Your cart</h2>
+<div class="cart">
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for line_item <- @line_items do %>
+        <tr class="product-<%= line_item.prato_id %>">
+          <td><%= line_item.prato.nome %></td>
+          <td><%= line_item.quantity %></td>
+          <td>
+            <%= link "Remove from cart",
+              to: line_item_path(@conn, :delete, line_item),
+              method: :delete,
+              class: "remove-from-cart" %>
+            <%= form_for Tccv2.LineItem.changeset(line_item),
+              line_item_path(@conn, :update, line_item), fn f -> %>
+              <%= number_input f, :quantity, class: "quantity" %>
+              <%= submit("Update") %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h3>Total</h3>
+  <p><%= Tccv2.Register.cart_amount(@carrinho) %></p>
+  <%= form_for @conn, checkout_path(@conn, :checkout), [as: "checkout"], fn _ -> %>
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Application.get_env(:tccv2, :stripe_publishable_key) %>"
+      data-amount="<%= Tccv2.Register.cart_amount_in_cents(@carrinho) %>"
+      data-name="Stripe.com"
+      data-description="2 widgets"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      data-locale="auto"
+      data-zip-code="true">
+    </script>
+  <% end %>
+</div>

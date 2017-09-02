@@ -38,11 +38,16 @@ scope "/" do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/carrinho", CarrinhoController, :show
+    post "/carrinho/add", CarrinhoController, :add, as: :add_to_cart
+    post "/carrinho/checkout", CarrinhoController, :checkout, as: :checkout
+    resources "/line_items", LineItemController, only: [:update, :delete]
   end
   scope "/", Tccv2 do
     pipe_through :protected
     resources "/restaurantes", RestauranteController do
     resources "/pratos", PratoController
+
   end
 
     # Add protected routes below
