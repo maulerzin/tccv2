@@ -1,7 +1,7 @@
 defmodule Tccv2.CarrinhoController do
   use Tccv2.Web, :controller
 
-  alias Tccv2.{LineItem, Carrinho, Register}
+  alias Tccv2.{LineItem, Carrinho, Register, Prato}
 
   plug :add_cart
 
@@ -29,7 +29,11 @@ defmodule Tccv2.CarrinhoController do
   end
 
   def add(conn, %{"prato" => %{"id" => prato_id}}) do
+    query = from p in Prato, where: p.id == ^prato_id, select: p.valor
+    valor = Repo.one(query)
+
     LineItem.changeset(%LineItem{}, %{
+      valor: valor,
       prato_id: prato_id,
       carrinho_id: conn.assigns[:carrinho].id,
       quantity: 1

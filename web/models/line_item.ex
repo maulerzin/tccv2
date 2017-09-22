@@ -3,6 +3,7 @@ defmodule Tccv2.LineItem do
 
   schema "line_items" do
     field :quantity, :integer
+    field :valor, :decimal
     belongs_to :prato, Tccv2.Prato
     belongs_to :carrinho, Tccv2.Carrinho
     belongs_to :pedido, Tccv2.Pedido
@@ -15,7 +16,7 @@ defmodule Tccv2.LineItem do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:quantity, :prato_id, :carrinho_id])
-    |> validate_required([:quantity, :prato_id])
+    |> cast(params, [:quantity, :prato_id, :carrinho_id,:valor])
+    |> validate_required([:quantity, :prato_id, :valor])
   end
 end
