@@ -1,29 +1,94 @@
-<h2>Listing Restaurantes</h2>
+<head>
+  <!-- Material Design Lite -->
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
+  <!-- Material Design icon font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<div class="navbar navbar-toggleable-md navbar-light bg-faded   fixed-top" max-height90px;>
+  <a class="navbar-brand  " rel="home" href="#">
+ <img  width="100" height="100" alt=""
+      src="/images/psd.png">
+</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" max-height=90px;>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse topBotomBordersOut "  id="navbarTogglerDemo01" max-height=90px;>
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link " href="#">Buscar <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Minha Conta</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Pedidos</a>
+      </li>
+
+    </ul>
+
+
+
+
+
+  </div>
+   <!--end navbar-right -->
+   <a href="#" id="cart"><i class="fa fa-shopping-cart"></i></a>
+   <%= button "Sair", class: "button outline",to: session_path(@conn, :delete), method: :delete  %>
+,
+
+</div>
+
+<div id="popup2" class="overlay " >
+  <div class="popup"  style="top: -10%;">
+
+
+
+
+
+
+  </div>
+</div>
+
+
+<h1>Meus Restaurantes</h1>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>Nome</th>
-
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<ul class="flex-container" >
 <%= for restaurante <- @restaurantes do %>
-    <tr>
-      <td><%= restaurante.nome %></td>
 
 
 
-      <td class="text-right">
-        <%= link "Show", to: restaurante_prato_path(@conn, :index, restaurante), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: restaurante_path(@conn, :edit, restaurante), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: restaurante_path(@conn, :delete, restaurante), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
+        <ul class="list-grid grid-view"  height:10px;>
+
+
+
+
+          <li class="item">
+            <figure class="item-pic"> <img
+                  src="/images/yellow-restaurant-64.png"></figure>
+            <h3 class="item-title list-cell"><%= restaurante.nome %></h3>
+            <%= link "Show", to: restaurante_prato_path(@conn, :index, restaurante), class: "btn btn-default btn-xs " %>
+                    <%= link "Editar", to: restaurante_path(@conn, :edit, restaurante), class: "btn btn-default btn-xs font-color = gray1" %>
+                    <%= link "Apagar", to: restaurante_path(@conn, :delete, restaurante), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs "  %>
+          </li>
+
+        </ul>
+
+
+
+
+
 <% end %>
-  </tbody>
-</table>
 
-<%= link "New restaurante", to: restaurante_path(@conn, :new) %>
+</ul>
+<li></li>
+<li><a href="/restaurantes/new">  <button class="plus"></button>
+
+</a>
+</li>
+</table>

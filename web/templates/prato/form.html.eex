@@ -1,33 +1,125 @@
-<%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
+<div class="navbar navbar-toggleable-md navbar-light bg-faded   fixed-top" max-height90px;>
+  <a class="navbar-brand  " rel="home" href="#">
+ <img  width="100" height="100" alt=""
+      src="/images/psd.png">
+</a>
 
-  <div class="form-group">
-    <%= label f, :nome, class: "control-label" %>
-    <%= text_input f, :nome, class: "form-control" %>
-    <%= error_tag f, :nome %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" max-height:90px;>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse topBotomBordersOut "  id="navbarTogglerDemo01" max-height=90px;>
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link " href="#">Buscar <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Minha Conta</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Pedidos</a>
+      </li>
+
+    </ul>
+
+
+
+
+
   </div>
+   <!--end navbar-right -->
+   <a href="#" id="cart"><i class="fa fa-shopping-cart"></i></a>
+  <a class="button outline" href="#popup2" max-height:90px;>Sair</a>
+</div>
 
-  <div class="form-group">
-    <%= label f, :valor, class: "control-label" %>
-    <%= text_input f, :valor, class: "form-control" %>
-    <%= error_tag f, :valor %>
+<div id="popup2" class="overlay " >
+  <div class="popup"  style="top: -10%;">
+
+
+
+
+
+
   </div>
+</div>
 
-  <div class="form-group">
-    <%= label f, :descricao, class: "control-label" %>
-    <%= text_input f, :descricao, class: "form-control" %>
-    <%= error_tag f, :descricao %>
-  </div>
+      <div id="popup1" class="overlay " >
+      	<div class="popup"  style="top: -10%;">
 
 
 
+      <div class="form__login">
+        <h1 class="form__header">Login</h1>
+
+          <a class="close" href="#">×</a>
+          <div class='login--body'>
+
+            <label style="text-align: left;">
+              <div class='label'>Email</div>
+              <input type='text' placeholder='john@doe.com' required />
+            </label>
+            <label style="text-align: left;">
+              <div class='label'>Senha</div>
+              <input type= :password placeholder='*********' required />
+            </label>
+
+            <div class='sbmt'>
+              <button class='sbmt--btn'>Entrar</button>
+            </div>
+          </div>
+            <small>Não é membro?<a href="/registrations/new" style="color: gray; font-size: 14px;">Clique aqui.</a></small>
+
+      </div>
 
 
-  <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
-  </div>
+      	</div>
+      </div>
+
+</div>
+
+<body style="background-color: #ebebe0;">
+
+    <%= form_for @changeset, @action, fn f -> %>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+          <h2>Cadastro</h2>
+        </div>
+        </div>
+        <div class="form-group">
+          <%= label f, :nome, class: "control-label" %>
+          <%= text_input f, :nome, class: "form-control" %>
+          <%= error_tag f, :nome %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :valor, class: "control-label" %>
+          <%= text_input f, :valor, class: "form-control" %>
+          <%= error_tag f, :valor %>
+        </div>
+
+        <div class="form-group">
+          <%= label f, :descricao, class: "control-label" %>
+          <%= text_input f, :descricao, class: "form-control" %>
+          <%= error_tag f, :descricao %>
+        </div>
+
+
+
+
+
+
+
+              <div class="form-group">
+                <%= submit "Cadastrar", class: "btn btn-primary" %>
+              </div>
 <% end %>
+
+
+</div>
+
+
+</div>
+</div>
+
+</body>

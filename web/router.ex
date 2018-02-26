@@ -38,6 +38,7 @@ scope "/" do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
     get "/carrinho", CarrinhoController, :show
     post "/carrinho/add", CarrinhoController, :add, as: :add_to_cart
     post "/carrinho/checkout", CarrinhoController, :checkout, as: :checkout
@@ -45,6 +46,12 @@ scope "/" do
   end
   scope "/", Tccv2 do
     pipe_through :protected
+    get "/inicio", InicioController, :index
+    get "/inicio/japones", InicioController, :japones
+    get "/inicio/pizza", InicioController, :pizza
+    get "/inicio/lanche", InicioController, :lanche
+    get "/inicio/saudavel", InicioController, :saudavel
+    get "/inicio/doces", InicioController, :doces
     resources "/restaurantes", RestauranteController do
     resources "/pratos", PratoController
 

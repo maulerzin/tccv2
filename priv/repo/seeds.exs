@@ -12,7 +12,7 @@
 alias Tccv2.Repo
 alias Tccv2.Categoria
 
-for categoria <- ~w(Japonês Pizzas Lanches Saudável Sobremesa ) do
+for categoria <- ~w(Japonês Pizza Lanches Saudável Doces ) do
   Repo.get_by(Categoria, nome: categoria) ||
     Repo.insert!(%Categoria{nome: categoria})
 end

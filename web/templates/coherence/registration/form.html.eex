@@ -1,87 +1,180 @@
-<%= form_for @changeset, @action, [as: :registration], fn f  -> %>
 
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+
+
+<div class="navbar navbar-toggleable-md navbar-light bg-faded   fixed-top" max-height90px;>
+  <a class="navbar-brand  " rel="home" href="#">
+ <img  width="100" height="100" alt=""
+      src="/images/psd.png">
+</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" max-height:90px;>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse topBotomBordersOut "  id="navbarTogglerDemo01" max-height=90px;>
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link " href="#">Início <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Categorias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Sobre</a>
+      </li>
+
+    </ul>
+
+
+
+
+  </div>
+
+      <div id="popup1" class="overlay " >
+      	<div class="popup"  style="top: -10%;">
+
+
+
+      <div class="form__login">
+        <h1 class="form__header">Login</h1>
+
+          <a class="close" href="#">×</a>
+          <div class='login--body'>
+
+            <label style="text-align: left;">
+              <div class='label'>Email</div>
+              <input type='text' placeholder='john@doe.com' required />
+            </label>
+            <label style="text-align: left;">
+              <div class='label'>Senha</div>
+              <input type= :password placeholder='*********' required />
+            </label>
+
+            <div class='sbmt'>
+              <button class='sbmt--btn'>Entrrar</button>
+            </div>
+          </div>
+            <small>Não é membro?<a href="/registrations/new" style="color: gray; font-size: 14px;">Clique aqui.</a></small>
+
+      </div>
+
+
+      	</div>
+      </div>
+  <a class="button outline" href="#popup1" max-height:90px;>Entre ou Cadastre-se</a>
+</div>
+
+<body style="background-color: #ebebe0;">
+  <div id="wrap">
+      <%= form_for @changeset, @action, [as: :registration], fn f  -> %>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+          <h2>Cadastro</h2>
+        </div>
     </div>
-  <% end %>
+  <div class="row">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+            <form id="contact-form" class="form" >
+<div id="wrap">
 
-  <div class="form-group">
-    <%= required_label f, :name, class: "control-label" %>
-    <%= text_input f, :name, class: "form-control", required: "" %>
-    <%= error_tag f, :name %>
-  </div>
-
-  <div class="form-group">
-    <%= required_label f, :cpf, class: "control-label" %>
-    <%= text_input f, :cpf, class: "form-control", required: "" %>
-    <%= error_tag f, :cpf %>
-  </div>
-
-  <%= unless (login_field = Coherence.Config.login_field) == :email do %>
+  <div id="left_col">
     <div class="form-group">
-      <%= required_label f, login_field, class: "control-label" %>
-      <%= text_input f, login_field, class: "form-control", required: "" %>
-      <%= error_tag f, login_field %>
+      <%= required_label f, :nome, class: "control-label" %>
+      <%= text_input f, :name, class: "form-control", required: "" %>
+      <%= error_tag f, :name %>
     </div>
-  <% end %>
 
-  <div class="form-group">
-    <%= required_label f, :email, class: "control-label" %>
-    <%= text_input f, :email, class: "form-control", required: "" %>
-    <%= error_tag f, :email %>
-  </div>
+    <div class="form-group">
+      <%= required_label f, :cpf, class: "control-label" %>
+      <%= text_input f, :cpf, class: "form-control", required: "" %>
+      <%= error_tag f, :cpf %>
+    </div>
 
-  <div class="form-group">
-    <%= required_label f, :telefone, class: "control-label" %>
-    <%= text_input f, :telefone, class: "form-control", required: "" %>
-    <%= error_tag f, :telefone %>
-  </div>
+    <%= unless (login_field = Coherence.Config.login_field) == :email do %>
+      <div class="form-group">
+        <%= required_label f, login_field, class: "control-label" %>
+        <%= text_input f, login_field, class: "form-control", required: "" %>
+        <%= error_tag f, login_field %>
+      </div>
+    <% end %>
 
-  <div class="form-group">
-    <%= required_label f, :password, class: "control-label" %>
-    <%= password_input f, :password, [class: "form-control"] ++ @required %>
-    <%= error_tag f, :password %>
-  </div>
+    <div class="form-group">
+      <%= required_label f, :email, class: "control-label" %>
+      <%= text_input f, :email, class: "form-control", required: "" %>
+      <%= error_tag f, :email %>
+    </div>
 
-  <div class="form-group">
-    <%= required_label f, :password_confirmation, class: "control-label" %>
-    <%= password_input f, :password_confirmation, [class: "form-control"] ++ @required %>
-    <%= error_tag f, :password_confirmation %>
-  </div>
+    <div class="form-group">
+      <%= required_label f, :telefone, class: "control-label" %>
+      <%= text_input f, :telefone, class: "form-control", required: "" %>
+      <%= error_tag f, :telefone %>
+    </div>
 
-  <div class="form-group">
-    <%= required_label f, :estado, class: "control-label" %>
-    <%= text_input f, :estado, class: "form-control", required: "" %>
-    <%= error_tag f, :estado %>
-  </div>
+    <div class="form-group">
+      <%= required_label f, :senha, class: "control-label" %>
+      <%= password_input f, :password, [class: "form-control"] ++ @required %>
+      <%= error_tag f, :password %>
+    </div>
 
-  <div class="form-group">
-    <%= required_label f, :cidade, class: "control-label" %>
-    <%= text_input f, :cidade, class: "form-control", required: "" %>
-    <%= error_tag f, :cidade %>
-  </div>
+    <div class="form-group">
+     <%= required_label f, :Confirme_a_senha, class: "control-label" %>
+     <%= password_input f, :password_confirmation, [class: "form-control"] ++ @required %>
+     <%= error_tag f, :password_confirmation %>
+   </div>
 
-  <div class="form-group">
-    <%= required_label f, :bairro, class: "control-label" %>
-    <%= text_input f, :bairro, class: "form-control", required: "" %>
-    <%= error_tag f, :bairro %>
-  </div>
+</div>
+  <div id="right_col">
 
-  <div class="form-group">
-    <%= required_label f, :cep, class: "control-label" %>
-    <%= text_input f, :cep, class: "form-control", required: "" %>
-    <%= error_tag f, :cep %>
-  </div>
 
-  <div class="form-group">
-    <%= required_label f, :endereco, class: "control-label" %>
-    <%= text_input f, :endereco, class: "form-control", required: "" %>
-    <%= error_tag f, :endereco %>
-  </div>
+   <div class="form-group">
+     <%= required_label f, :estado, class: "control-label" %>
+     <%= text_input f, :estado, class: "form-control", required: "" %>
+     <%= error_tag f, :estado %>
+   </div>
 
-  <div class="form-group">
-    <%= submit @label, class: "btn btn-primary" %>
-    <%= link "Cancel", to: Coherence.Config.logged_out_url("/"), class: "btn" %>
-  </div>
+   <div class="form-group">
+     <%= required_label f, :cidade, class: "control-label" %>
+     <%= text_input f, :cidade, class: "form-control", required: "" %>
+     <%= error_tag f, :cidade %>
+   </div>
+
+   <div class="form-group">
+     <%= required_label f, :bairro, class: "control-label" %>
+     <%= text_input f, :bairro, class: "form-control", required: "" %>
+     <%= error_tag f, :bairro %>
+   </div>
+
+   <div class="form-group">
+     <%= required_label f, :cep, class: "control-label" %>
+     <%= text_input f, :cep, class: "form-control", required: "" %>
+     <%= error_tag f, :cep %>
+   </div>
+
+   <div class="form-group">
+     <%= required_label f, :endereco, class: "control-label" %>
+     <%= text_input f, :endereco, class: "form-control", required: "" %>
+     <%= error_tag f, :endereco %>
+   </div>
+
+   <div class="form-group" >
+<br />
+<br />
+     <br />
+
+     <%= submit @label, class: "btn btn-primary "  %>
+     <%= link "Cancelar", to: Coherence.Config.logged_out_url("/"), class: "btn"  %>
+
+   </div>
+</div>
 <% end %>
+</div>
+
+
+</div>
+
+
+</div>
+</div>
+
+</body>

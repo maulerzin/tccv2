@@ -1,32 +1,82 @@
-<h2>Listing pratos</h2>
+<div class="navbar navbar-toggleable-md navbar-light bg-faded   fixed-top" max-height90px;>
+  <a class="navbar-brand  " rel="home" href="#">
+ <img  width="100" height="100" alt=""
+      src="/images/psd.png">
+</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" max-height:90px;>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse topBotomBordersOut "  id="navbarTogglerDemo01" max-height=90px;>
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link " href="#">Buscar <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Minha Conta</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Pedidos</a>
+      </li>
+
+    </ul>
+
+
+
+
+
+  </div>
+   <!--end navbar-right -->
+   <a href="#" id="cart"><i class="fa fa-shopping-cart"></i></a>
+  <a class="button outline" href="#popup2" max-height:90px;>Sair</a>
+</div>
+
+<div id="popup2" class="overlay " >
+  <div class="popup"  style="top: -10%;">
+
+
+
+
+
+
+  </div>
+</div>
+<h1>Cardápio</h1>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Valor</th>
-
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<ul class="flex-container" >
 <%= for prato <- @pratos do %>
-    <tr>
-      <td><%= prato.nome %></td>
-        <td><%= prato.valor %></td>
-          <td><%= prato.restaurante_id %></td>
 
 
-      <td class="text-right">
-        <%= link "Show", to: restaurante_prato_path(@conn, :show, @restaurante_id, prato), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: restaurante_prato_path(@conn, :edit, @restaurante_id, prato), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: restaurante_prato_path(@conn, :delete, @restaurante_id, prato), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
+
+        <ul class="list-grid grid-view"  height:10px;>
+
+
+
+
+          <li class="item">
+            <figure class="item-pic"> <img
+                  src="/images/yellow-restaurant-64.png"></figure>
+            <h3 class="item-title list-cell"><%= prato.nome %></h3>
+              <h3 class="item-title list-cell">R$ <%= prato.valor %></h3>
+
+            <%= link "Mais", to: restaurante_prato_path(@conn, :show, @restaurante_id, prato), class: "btn btn-default btn-xs" %>
+            <%= link "Editar", to: restaurante_prato_path(@conn, :edit, @restaurante_id, prato), class: "btn btn-default btn-xs" %>
+            <%= link "Apagar", to: restaurante_prato_path(@conn, :delete, @restaurante_id, prato), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          </li>
+
+        </ul>
+
+
+
+
+
 <% end %>
-  </tbody>
+</ul>
+<ul></ul>
+ <button class="plus1"><%= link "   +", to: restaurante_prato_path(@conn, :new, @restaurante_id)%></button>
+
+
 </table>
-
-
-<%= link "Novo Prato", to: restaurante_prato_path(@conn, :new, @restaurante_id) %>

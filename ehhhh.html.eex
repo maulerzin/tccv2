@@ -1,0 +1,83 @@
+
+
+<div class="navbar navbar-toggleable-md navbar-light bg-faded   fixed-top" max-height90px;>
+  <a class="navbar-brand  " rel="home" href="#">
+ <img  width="100" height="100" alt=""
+      src="/images/psd.png">
+</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" max-height:90px;>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse topBotomBordersOut "  id="navbarTogglerDemo01" max-height=90px;>
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link " href="#">Início <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Categorias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Sobre</a>
+      </li>
+
+    </ul>
+
+
+
+
+  </div>
+
+      <div id="popup1" class="overlay " >
+      	<div class="popup"  style="top: -10%;">
+
+
+
+      <div class="form__login">
+        <h1 class="form__header">Login</h1>
+
+          <a class="close" href="#">×</a>
+          <div class='login--body'>
+
+            <label style="text-align: left;">
+              <div class='label'>Email</div>
+              <input type='text' placeholder='rango@rango.com' required />
+            </label>
+            <label style="text-align: left;">
+              <div class='label'>Senha</div>
+              <input type= :password placeholder='*********' required />
+            </label>
+
+            <div class='sbmt'>
+              <button class='sbmt--btn'>Entrar</button>
+            </div>
+          </div>
+            <small>Não é membro?<a href="/registrations/new" style="color: gray; font-size: 14px;">Clique aqui.</a></small>
+
+      </div>
+
+
+      	</div>
+      </div>
+  <a class="button outline" href="#popup1" max-height:90px;>Entre ou Cadastre-se</a>
+</div>
+
+
+
+<body style="background-image: url(/images/cook.jpeg); background-attachment: fixed ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;">
+  <h1 style="font-size: 64px; color: #FFF;"> Tá com fome?<br />Que tal pedir um rango? </h1>
+<form class="form-inline my-2 my-lg-0 " style="position:fixed;
+  top:55%;
+  left:40%;
+   ">
+
+ <input class="form-control mr-sm-2 center"  type="text" placeholder="Quer comer o que?">
+ <button class="btn btn-outline-success my-2 my-sm-0" style="color: #FFF; border-color: yellow" " type="submit">Buscar</button>
+</form>
+
+   </body>

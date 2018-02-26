@@ -1,0 +1,38 @@
+<div class="page">
+	<div id="store_cart">
+		<ul class="cart_head">
+			
+			<li class="cart_head_product">
+				Product
+			</li>
+			<li class="cart_head_options">
+				Edit
+			</li>
+			<li class="cart_head_price">
+				Price
+			</li>
+		</ul>
+
+		<ul class="cart_item">
+
+      <%= for line_item <- @line_items do %>
+        <tr class="product-<%= line_item.prato_id %>">
+			<li class="cart_product_col">
+			<td><%= line_item.prato.nome %></td>
+			</li>
+
+      		<li class="cart_options_col">
+				<td><%= line_item.quantity %></td>
+			</li>
+
+			<li class="cart_price_col">
+				<td><%= line_item.valor %></td>
+			</li>
+
+		</ul>
+  </tr>
+<% end %>
+
+
+	</div>
+</div>
