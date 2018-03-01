@@ -14,13 +14,16 @@
 
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link " href="#">Início <span class="sr-only">(current)</span></a>
+        <a class="nav-link " href="/">Início <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Categorias</a>
+        <a class="nav-link" href="/restaurantes">Meus Restarantes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Sobre</a>
+        <a class="nav-link" href="#">Meus Pedidos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/inicio">Buscar</a>
       </li>
 
     </ul>
@@ -53,7 +56,7 @@
               <%= password_input f, :password, class: "form-control", required: "" %>
             </label>
 
-            <div class='sbmt'>
+            <div href="/inicio",class='sbmt'>
             <%= submit "Entrar", class: "sbmt--btn" %>
             </div>
           </div>

@@ -76,7 +76,7 @@
 </a>
 
 
-<a href="<%=inicio_path(@conn, :lanches) %>" style="color: gray; font-size: 14px;">
+<a href="<%=inicio_path(@conn, :lanche) %>" style="color: gray; font-size: 14px;">
           <li class="item">
               <h3 class="item-title list-cell">Lanches</h3>
            <img
@@ -136,7 +136,7 @@
     </div>
 
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
+      <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" href="/inicio/restaurantes">
           MENU
         </a>
     </div>
